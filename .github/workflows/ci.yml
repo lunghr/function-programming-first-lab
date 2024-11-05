@@ -2,8 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - first-lab  
   pull_request:
     branches:
       - first-lab
