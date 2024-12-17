@@ -74,7 +74,9 @@ let find_amicable_pairs_cycle limit =
   !sum
 
 let find_amicable_pairs_seq limit =
-  Seq.init limit (fun i -> i + 1)
+  Seq.ints 1
+  |> Seq.take limit
   |> Seq.filter (fun i ->
-         find_divisors_sum i <> i && find_divisors_sum (find_divisors_sum i) = i)
+         let sum1 = find_divisors_sum i in
+         sum1 <> i && find_divisors_sum sum1 = i)
   |> Seq.fold_left ( + ) 0
